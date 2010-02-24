@@ -10,11 +10,16 @@ if [ -z $1 ]; then
 	echo "usage: git-create project-name.git"
 else
 	gitdir="$1"
-	mkdir $gitdir
+	
+        mkdir $gitdir
 	pushd $gitdir
+
 	git --bare init
 	git --bare update-server-info
-	chmod a+x hooks/post-update
+
+        cp hooks/post-update.sample hooks/post-update
+        chmod a+x hooks/post-update
+
 	touch git-daemon-export-ok
 	popd
 fi

@@ -9,13 +9,13 @@
 rvm_path=""
 
 # little hack to resolve rvm using root
-if [[ $(whoami) == "root" ]] ; then
+if [ $(whoami) == "root" ] ; then
     rvm_path="/usr/local/rvm"
 else
     rvm_path="$HOME/.rvm"
 fi
 
-if [[ -s $rvm_path/scripts/rvm ]] ; then
+if [ -s $rvm_path/scripts/rvm ] ; then
 	source "$rvm_path/scripts/rvm"
 fi
 
