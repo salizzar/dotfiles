@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#
+# Based on original written by Craig P Jolicoeur. GitHub: http://github.com/cpjolicoeur
+#
+# Source: http://craigjolicoeur.com/blog/hosting-git-repositories-on-dreamhost 
+#
+
+if [ -z $1 ]; then
+	echo "usage: git-create project-name.git"
+else
+	gitdir="$1"
+	mkdir $gitdir
+	pushd $gitdir
+	git --bare init
+	git --bare update-server-info
+	chmod a+x hooks/post-update
+	touch git-daemon-export-ok
+	popd
+fi

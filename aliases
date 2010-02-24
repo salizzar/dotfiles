@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+#
+# Useful aliases for commands.
+# 
+# Marcelo Correia Pinheiro
+#
+
+# bash
+alias ls='ls -G'
+alias ll='ls -lh'
+alias la='ls -Ga'
+alias lla='ls -lha'
+alias duh='du -sh'
+alias vim='vi -p'
+
+# ruby
+alias ss='script/server webrick'
+alias sc='script/console'
+alias st='script/autospec'
+alias sg='script/generate'
