@@ -17,7 +17,7 @@ alias vim='vi -p'
 # ruby
 alias ss='script/server webrick'
 alias sc='script/console'
-alias st='script/autospec'
+alias as='script/autospec'
 alias sg='script/generate'
 alias sd='script/destroy'
 alias sp='script/plugin'
