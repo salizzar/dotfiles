@@ -1,0 +1,4 @@
+# view code with syntax highlighting
+function pless {
+  pygmentize $1 | less -r
+}
