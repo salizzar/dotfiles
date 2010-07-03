@@ -7,19 +7,19 @@
 #
 
 if [ -z $1 ]; then
-	echo "usage: git-create project-name.git"
+    echo "usage: git-create project-name.git"
 else
-	gitdir="$1"
+    gitdir="$1"
 	
-        mkdir $gitdir
-	pushd $gitdir
+    mkdir $gitdir
+    pushd $gitdir
 
-	git --bare init
-	git --bare update-server-info
+    git --bare init
+    git --bare update-server-info
 
-        cp hooks/post-update.sample hooks/post-update
-        chmod a+x hooks/post-update
+    cp hooks/post-update.sample hooks/post-update
+    chmod a+x hooks/post-update
 
-	touch git-daemon-export-ok
-	popd
+    touch git-daemon-export-ok
+    popd
 fi
