@@ -1,26 +1,21 @@
 #!/usr/bin/env bash
 
 #
-# Custom scripts loader.
+# Script loader. 
 # 
 
-# get basepath
 mypath=${BASH_ARGV[0]%/*} 
 
-# add scripts
 export PATH=$PATH:$mypath
 
-# aliases
 if [ -s $mypath/aliases ] ; then
     source $mypath/aliases
 fi
 
-# functions
 if [ -s $mypath/functions ] ; then
     source $mypath/functions
 fi
 
-# rvm
 if [ -s $mypath/rvm ] ; then
     source $mypath/rvm
 fi
