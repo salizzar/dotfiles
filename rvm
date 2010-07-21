@@ -5,6 +5,6 @@
 #
 
 if [ -s $HOME/.rvm/scripts/rvm ] ; then
-	source "$rvm_path/scripts/rvm"
+	source "$HOME/.rvm/scripts/rvm"
 fi
 
