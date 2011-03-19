@@ -12,21 +12,3 @@ alias lla='ls -lha'
 alias duh='du -sh'
 alias vim='vi -p'
 
-# rails 2
-alias ss='script/server webrick'
-alias sc='script/console'
-alias as='script/autospec'
-alias sg='script/generate'
-alias sd='script/destroy'
-alias sp='script/plugin'
-alias scbr='script/cucumber --format pretty'
-
-# rails 3
-alias sr='script/rails'
-alias srs='script/rails server webrick'
-alias src='script/rails console'
-alias srg='script/rails generate'
-alias srd='script/rails destroy'
-alias srp='script/rails plugin'
-alias srcc='script/rails cucumber --format pretty'
-
