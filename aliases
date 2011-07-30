@@ -4,10 +4,12 @@
 # Useful aliases for commands.
 #
 
-# bash
-alias ls='ls -G'
+if [ `uname -s` = 'Darwin' ]; then
+  alias ls='ls -G'
+fi
+
 alias ll='ls -lh'
-alias la='ls -Ga'
+alias la='ls -a'
 alias lla='ls -lha'
 alias duh='du -sh'
 alias vim='vi -p'

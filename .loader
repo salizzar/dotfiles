@@ -9,14 +9,14 @@ mypath=${BASH_ARGV[0]%/*}
 export PATH=$PATH:$mypath
 
 if [ -s $mypath/aliases ] ; then
-    source $mypath/aliases
+  source $mypath/aliases
 fi
 
 if [ -s $mypath/functions ] ; then
-    source $mypath/functions
+  source $mypath/functions
 fi
 
 if [ -s $mypath/rvm ] ; then
-    source $mypath/rvm
+  source $mypath/rvm
 fi
 
