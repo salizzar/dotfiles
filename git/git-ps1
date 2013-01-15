@@ -4,16 +4,29 @@
 # shell extension
 #
 
+folder_inside_repository(){
+  git rev-parse --is-inside-work-tree 2>/dev/null >&2
+  echo $?
+}
+
+repository_have_modifications(){
+  git diff --quiet 2> /dev/null
+  echo $?
+}
+
 git_prompt(){
   GIT="\[\033[38m\]\u:";
   GIT="$GIT\[\033[32m\]\w";
   GIT="$GIT\[\033[33m\]";
   GIT="$GIT\`git branch 2>/dev/null | grep \"^\*\" | sed -r \"s/\*\ (.*)/ \(\1\)/\"\`";
 
-  if [ git rev-parse --is-inside-work-tree 2>/dev/null >&2 ] || [ git diff --quiet 2>/dev/null >&2 ] ; then
-    GIT="$GIT "
-  else
+  inside_repository=$(folder_inside_repository)
+  repository_changed=$(repository_have_modifications)
+
+  if [ $inside_repository -eq 0 ] && [ $repository_changed -eq 1 ] ; then
     GIT="$GIT*"
+  else
+    GIT="$GIT "
   fi
 
   GIT="$GIT\[\033[37m\]$\[\033[00m\] "
