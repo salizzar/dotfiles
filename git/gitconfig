@@ -4,6 +4,7 @@
 
 [core]
 	editor = vim
+	excludesfile = ~/.dotfiles/git/gitignore
 
 [color]
   diff = auto

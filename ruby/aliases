@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#
+# ruby aliases.
+#
+
+alias bundle='rbenv exec bundle'
+alias rebundle='rm -rf vendor/bundle/* ; mkdir -p vendor/bundle ; bundle install'
+

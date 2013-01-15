@@ -8,15 +8,11 @@ mypath=${BASH_ARGV[0]%/*}
 
 export PATH=$PATH:$mypath
 
-if [ -s $mypath/aliases ] ; then
-  source $mypath/aliases
-fi
+for file in `ls $mypath/bash` ; do
+  source $mypath/bash/$file
+done
 
-if [ -s $mypath/functions ] ; then
-  source $mypath/functions
-fi
-
-if [ -s $mypath/rvm ] ; then
-  source $mypath/rvm
-fi
+for file in `ls $mypath/ruby` ; do
+  source $mypath/ruby/$file
+done
 

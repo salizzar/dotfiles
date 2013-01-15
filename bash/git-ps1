@@ -1,0 +1,19 @@
+git_prompt(){
+  GIT="\[\033[38m\]\u:";
+  GIT="$GIT\[\033[32m\]\w";
+  GIT="$GIT\[\033[33m\]";
+  GIT="$GIT\`git branch 2>/dev/null | grep \"^\*\" | sed -r \"s/\*\ (.*)/ \(\1\)/\"\`";
+  
+  if (git diff --quiet 2>/dev/null >&2) ; then
+    GIT="$GIT "
+  else
+    GIT="$GIT*"
+  fi
+  
+  GIT="$GIT\[\033[37m\]$\[\033[00m\] "
+
+  echo $GIT
+}
+
+export PROMPT_COMMAND='PS1="$(git_prompt) "';
+
