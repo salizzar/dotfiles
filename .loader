@@ -12,6 +12,10 @@ for file in `ls $mypath/bash` ; do
   source $mypath/bash/$file
 done
 
+for file in `ls $mypath/git`  ; do
+  source $mypath/git/$file
+done
+
 for file in `ls $mypath/ruby` ; do
   source $mypath/ruby/$file
 done
