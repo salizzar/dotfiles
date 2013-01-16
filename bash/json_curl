@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+#
+# Useful aliases for commands.
+#
+
+json_curl(){
+  curl -s $1 | python -mjson.tool
+}
+
