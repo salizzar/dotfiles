@@ -1,1 +1,8 @@
-*.swp
+*.log
+*.sw*
+.DS_Store
+.bundle
+.rbenv
+.rvmrc
+log
+vendor

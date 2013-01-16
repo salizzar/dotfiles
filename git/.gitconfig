@@ -4,7 +4,7 @@
 
 [core]
 	editor = vim
-	excludesfile = ~/.dotfiles/git/gitignore
+	excludesfile = ~/.dotfiles/git/.gitignore
 
 [color]
   diff = auto
@@ -29,3 +29,4 @@
   added = yellow
   changed = green
   untracked = cyan
+
