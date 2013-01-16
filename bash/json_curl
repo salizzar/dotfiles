@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Useful aliases for commands.
+# formats json_content with python and pygmentize.
 #
 
 json_curl(){
