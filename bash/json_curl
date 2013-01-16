@@ -5,6 +5,6 @@
 #
 
 json_curl(){
-  curl -s $1 | python -mjson.tool
+  curl -s $1 | python -mjson.tool | pygmentize -l json -g /dev/stdin
 }
 
