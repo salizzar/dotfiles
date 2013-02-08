@@ -4,7 +4,15 @@
 # formats json_content with python and pygmentize.
 #
 
+syntax_json(){
+  pygmentize -l json $*
+}
+
+ident_json(){
+  python -mjson.tool $*
+}
+
 json_curl(){
-  curl -s $* | python -mjson.tool | pygmentize -l json /dev/stdin
+  curl -s $* | ident_json | syntax_json
 }
 
