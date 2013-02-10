@@ -15,10 +15,18 @@ repository_have_modifications(){
 }
 
 git_prompt(){
+  if [ `uname -s` == 'Darwin' ] ; then
+    option='E'
+  else
+    option='r'
+  fi
+  
+  CMD=`git branch 2>/dev/null | grep '^*' | sed -$option 's/\*\ (.*)/ \(\1\)/'`
+
   GIT="\[\033[38m\]\u:";
   GIT="$GIT\[\033[32m\]\w";
   GIT="$GIT\[\033[33m\]";
-  GIT="$GIT\`git branch 2>/dev/null | grep \"^\*\" | sed -r \"s/\*\ (.*)/ \(\1\)/\"\`";
+  GIT="$GIT\$CMD";
 
   inside_repository=$(folder_inside_repository)
   repository_changed=$(repository_have_modifications)
