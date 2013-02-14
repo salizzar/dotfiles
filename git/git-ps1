@@ -38,7 +38,7 @@ git_prompt(){
   fi
 
   GIT="$GIT\[\033[37m\]$\[\033[00m\] "
-echo $GIT
+
   echo $GIT
 }
 
