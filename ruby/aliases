@@ -4,6 +4,12 @@
 # ruby aliases.
 #
 
-alias bundle='rbenv exec bundle'
+# check if rbenv exists
+rbenv &> /dev/null
+
+if [ $? -eq 0 ] ; then
+  alias bundle='rbenv exec bundle'
+fi
+
 alias rebundle='rm -rf vendor/bundle/* ; mkdir -p vendor/bundle ; bundle install'
 
