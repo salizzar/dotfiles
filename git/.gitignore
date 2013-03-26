@@ -4,5 +4,6 @@
 .bundle
 .rbenv
 .rvmrc
+.vagrant
 log
 vendor
