@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# formats a xml request with python, xmllint and pygmentize
+#
+
+xml_syntax(){
+  pygmentize -l xml
+}
+
+xml_ident(){
+  xmllint --format -
+}
+
+xml_curl(){
+  curl -s $* | xml_ident | xml_syntax
+}
+

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 #
-# formats json_content with python and pygmentize.
+# formats a json request with python and pygmentize.
 #
 
 json_syntax(){
-  pygmentize -l json $*
+  pygmentize -l json
 }
 
 json_ident(){
-  python -mjson.tool $*
+  python -mjson.tool
 }
 
 json_curl(){
