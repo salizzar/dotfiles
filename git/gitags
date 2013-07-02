@@ -7,7 +7,7 @@ gitags(){
     echo 'usage: gitags <tag-type>'
   else
     tagtype="$1"
-    git tag | grep $tagtype | sort -V | tail -10
+    git tag | egrep ^$tagtype | sort -V | tail -10
   fi
 }
 
