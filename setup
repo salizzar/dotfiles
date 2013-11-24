@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
 #
-# Script loader. 
-# 
+# Script loader.
+#
 
-mypath=${BASH_ARGV[0]%/*} 
-
-export PATH=$PATH:$mypath
+mypath=${BASH_ARGV[0]%/*}
 
 for file in `ls $mypath/bash` ; do
   source $mypath/bash/$file
