@@ -4,6 +4,8 @@
 # Script loader.
 #
 
+export PATH="/usr/local/git/bin:$PATH"
+
 mypath=${BASH_ARGV[0]%/*}
 
 for file in `ls $mypath/bash` ; do
