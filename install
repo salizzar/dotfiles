@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+#
+# Installer.
+#
+
+# force gitconfig
+ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
+
+# force inputrc
+ln -sf ~/.dotfiles/bash/.inputrc  ~/.inputrc
+
+# handle bash profile file to be appended
+bash_profile_file="";
+
+if [ `uname -s` = 'Darwin' ] ; then
+  bash_profile_file='bash_profile';
+else
+  bash_profile_file='bashrc';
+fi
+
+if ! egrep -q '^source ~\/\.dotfiles\/setup$' ~/.$bash_profile_file ; then
+  echo 'source ~/.dotfiles/setup' >> ~/.$bash_profile_file;
+fi
+
+echo 'Done.'
+
