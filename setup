@@ -20,3 +20,7 @@ for file in `ls $mypath/ruby` ; do
   source $mypath/ruby/$file
 done
 
+for file in `ls $mypath/docker` ; do
+  source $mypath/docker/$file
+done
+
