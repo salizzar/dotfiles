@@ -8,15 +8,7 @@ gitags(){
   else
     tagtype="$1"
 
-    cmd_args=""
-
-    if [ `uname -s` = 'Darwin' ] ; then
-      cmd_args="g"
-    else
-      cmd_args="V"
-    fi
-
-    git tag | egrep ^$tagtype | sort -$cmd_args | tail -10
+    git tag --list $tagtype* --sort=v:refname | tail -10
   fi
 }
 
