@@ -20,7 +20,3 @@ for file in $mypath/ruby/* ; do
   source $file
 done
 
-for file in $mypath/docker/* ; do
-  source $file
-done
-
