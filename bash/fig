@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+if [ -d ~/.fig ] ; then
+	export PATH=$PATH:~/.fig
+fi
