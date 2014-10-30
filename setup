@@ -8,15 +8,7 @@ export PATH="/usr/local/git/bin:$PATH"
 
 mypath=${BASH_ARGV[0]%/*}
 
-for file in $mypath/bash/* ; do
-  source $file
-done
-
-for file in $mypath/git/*  ; do
-  source $file
-done
-
-for file in $mypath/ruby/* ; do
-  source $file
+for file in $mypath/**/* ; do
+	source $file
 done
 

@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+if [ `uname -s` = 'Darwin' ] ; then
+	ps aux | grep -q boot2docker-vm > /dev/null
+
+	if [ $? -eq 0 ] ; then
+		$(boot2docker shellinit)
+	fi
+fi
+
