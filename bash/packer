@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
 if [ -d ~/.packer ] ; then
-  export PATH=$PATH:~/.packer
+	export PATH=$PATH:~/.packer
 fi
 

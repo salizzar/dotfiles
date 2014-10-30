@@ -5,41 +5,41 @@
 #
 
 folder_inside_repository(){
-  git rev-parse --is-inside-work-tree 2>/dev/null >&2
-  echo $?
+	git rev-parse --is-inside-work-tree 2>/dev/null >&2
+	echo $?
 }
 
 repository_have_modifications(){
-  git diff --quiet 2> /dev/null
-  echo $?
+	git diff --quiet 2> /dev/null
+	echo $?
 }
 
 git_prompt(){
-  if [ `uname -s` == 'Darwin' ] ; then
-    option='E'
-  else
-    option='r'
-  fi
-  
-  CMD=`git branch 2>/dev/null | grep '^*' | sed -$option 's/\*\ (.*)/ \(\1\)/'`
+	if [ `uname -s` == 'Darwin' ] ; then
+		option='E'
+	else
+		option='r'
+	fi
 
-  GIT="\[\033[38m\]\u:";
-  GIT="$GIT\[\033[32m\]\w";
-  GIT="$GIT\[\033[33m\]";
-  GIT="$GIT $CMD";
+	CMD=`git branch 2>/dev/null | grep '^*' | sed -$option 's/\*\ (.*)/ \(\1\)/'`
 
-  inside_repository=$(folder_inside_repository)
-  repository_changed=$(repository_have_modifications)
+	GIT="\[\033[38m\]\u:";
+	GIT="$GIT\[\033[32m\]\w";
+	GIT="$GIT\[\033[33m\]";
+	GIT="$GIT $CMD";
 
-  if [ $inside_repository -eq 0 ] && [ $repository_changed -eq 1 ] ; then
-    GIT="$GIT*"
-  else
-    GIT="$GIT "
-  fi
+	inside_repository=$(folder_inside_repository)
+	repository_changed=$(repository_have_modifications)
 
-  GIT="$GIT\[\033[37m\]$\[\033[00m\] "
+	if [ $inside_repository -eq 0 ] && [ $repository_changed -eq 1 ] ; then
+		GIT="$GIT*"
+	else
+		GIT="$GIT "
+	fi
 
-  echo $GIT
+	GIT="$GIT\[\033[37m\]$\[\033[00m\] "
+
+	echo $GIT
 }
 
 export PROMPT_COMMAND='PS1="$(git_prompt) "';

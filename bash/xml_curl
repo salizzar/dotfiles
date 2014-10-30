@@ -5,14 +5,14 @@
 #
 
 xml_syntax(){
-  pygmentize -l xml
+	pygmentize -l xml
 }
 
 xml_ident(){
-  xmllint --format -
+	xmllint --format -
 }
 
 xml_curl(){
-  curl -s $* | xml_ident | xml_syntax
+	curl -s $* | xml_ident | xml_syntax
 }
 

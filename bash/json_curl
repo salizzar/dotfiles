@@ -5,14 +5,14 @@
 #
 
 json_syntax(){
-  pygmentize -l json
+	pygmentize -l json
 }
 
 json_ident(){
-  python -mjson.tool
+	python -mjson.tool
 }
 
 json_curl(){
-  curl -s $* | json_ident | json_syntax
+	curl -s $* | json_ident | json_syntax
 }
 
