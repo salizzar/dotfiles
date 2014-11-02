@@ -1,5 +1,7 @@
 *.log
 *.sw*
+*.tfvars
+*.tfstate*
 .DS_Store
 .bundle
 .rbenv

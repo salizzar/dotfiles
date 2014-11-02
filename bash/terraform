@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+if [ -d ~/.terraform ] ; then
+	export PATH=$PATH:~/.terraform
+fi
+
