@@ -1,9 +1,11 @@
 #! /usr/bin/env bash
 
 if [ `uname -s` = 'Darwin' ] ; then
-	ps aux | grep -q boot2docker-vm > /dev/null
+	status=`boot2docker status`
 
-	if [ $? -eq 0 ] ; then
+	if [ $status != 'running' ] ; then
+		boot2docker up
+
 		$(boot2docker shellinit)
 	fi
 fi
