@@ -1,6 +1,0 @@
-#! /usr/bin/env bash
-
-if [ -d ~/.docker ] ; then
-	export PATH=$PATH:~/.docker
-fi
-
