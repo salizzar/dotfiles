@@ -2,7 +2,7 @@
 
 if [ `uname -s` = 'Darwin' ] ; then
 	status=`boot2docker status`
-	if [ $status == 'poweroff' ] ; then
+	if [ $status == 'poweroff' ] || [ $status == 'aborted' ] ; then
 		boot2docker up
 	fi
 
