@@ -2,11 +2,10 @@
 
 if [ `uname -s` = 'Darwin' ] ; then
 	status=`boot2docker status`
-
-	if [ $status != 'running' ] ; then
+	if [ $status == 'poweroff' ] ; then
 		boot2docker up
-
-		$(boot2docker shellinit)
 	fi
+
+	`boot2docker shellinit`
 fi
 
