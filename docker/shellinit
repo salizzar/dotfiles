@@ -3,7 +3,7 @@
 if [ `uname -s` = 'Darwin' ] ; then
 	status=`boot2docker status`
 
-	if [ $status == 'running' ] ; then
+	if [ $status = 'running' ] ; then
 		`boot2docker shellinit`
 	fi
 fi
