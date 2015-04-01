@@ -2,6 +2,7 @@
 *.sw*
 *.tfvars
 *.tfstate*
+*.pyc
 .DS_Store
 .bundle
 .rbenv
