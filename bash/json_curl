@@ -12,7 +12,11 @@ json_ident(){
 	python -mjson.tool
 }
 
+jsonify(){
+	json_ident | json_syntax
+}
+
 json_curl(){
-	curl -s $* | json_ident | json_syntax
+	curl -s $* | jsonify
 }
 
