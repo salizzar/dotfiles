@@ -1,0 +1,46 @@
+#! /usr/bin/env bash
+
+terraform_bin=$(which terraform)
+terraform_dir=$(dirname ${terraform_bin})
+#echo "Terraform bin: ${terraform_bin}"
+
+terraform_version_file=/tmp/terraform_version
+${terraform_bin} --version > $terraform_version_file
+
+actual_version=`cat $terraform_version_file | head -n1 | awk '{ print $2 }' | sed 's/v//g'`
+#echo $actual_version
+
+latest_version=`cat $terraform_version_file | tail -n1 | awk '{ print $2 }' | sed 's/\.$//g'`
+#echo $latest_version
+
+if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != "" ] ; then
+	echo "Terraform actual version: ${actual_version}"
+	echo "Terraform latest version: ${latest_version}"
+	echo "Upgrading Terraform now."
+
+	uname=$(uname -s)
+
+	if [ "$uname" == "Linux" ] ; then
+		platform="linux_amd64"
+	else
+		platform="darwin_amd64"
+	fi
+
+	terraform_tarball="terraform_${latest_version}_${platform}.zip"
+	terraform_tmp_dir="/tmp/${terraform_tarball}"
+
+	curl -L -o ${terraform_tmp_dir} https://dl.bintray.com/mitchellh/terraform/${terraform_tarball}
+
+	for file in ${terraform_dir}/* ; do
+		egrep -q '\.zip$' $file
+
+		if [ $? -eq 0 ] ; then
+			rm -v $file
+		fi
+	done
+
+	unzip -o -d ${terraform_dir} ${terraform_tmp_dir}
+
+	mv -v ${terraform_tmp_dir} ${terraform_dir}
+fi
+
