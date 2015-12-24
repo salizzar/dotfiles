@@ -27,7 +27,9 @@ if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != ""
 	fi
 
 	terraform_tarball="terraform_${latest_version}_${platform}.zip"
-	terraform_tmp_dir="/tmp/${terraform_tarball}"
+	terraform_tmp_dir="/tmp/terraform/${terraform_tarball}"
+	terraform_bkp_dir="/tmp/terraform/bkp"
+
 
 	curl -L -o ${terraform_tmp_dir} https://releases.hashicorp.com/terraform/${latest_version}/${terraform_tarball}
 
@@ -35,12 +37,19 @@ if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != ""
 		egrep -q '\.zip$' $file
 
 		if [ $? -eq 0 ] ; then
-			rm -v $file
+			mkdir -p ${terraform_bkp_dir}
+			mv -v $file ${terraform_bkp_dir}
 		fi
 	done
 
 	unzip -o -d ${terraform_dir} ${terraform_tmp_dir}
 
-	mv -v ${terraform_tmp_dir} ${terraform_dir}
+	if [ ! $? -eq 0 ] ; then
+		echo "Failed to retrieve latest Terraform package. Retrieving existent version now."
+		mv -v ${terraform_bkp_dir}/* ${terraform_dir}
+	else
+		mv -v ${terraform_tmp_dir} ${terraform_dir}
+		rm -rf ${terraform_bkp_dir}
+	fi
 fi
 
