@@ -29,7 +29,7 @@ if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != ""
 	terraform_tarball="terraform_${latest_version}_${platform}.zip"
 	terraform_tmp_dir="/tmp/${terraform_tarball}"
 
-	curl -L -o ${terraform_tmp_dir} https://dl.bintray.com/mitchellh/terraform/${terraform_tarball}
+	curl -L -o ${terraform_tmp_dir} https://releases.hashicorp.com/terraform/${latest_version}/${terraform_tarball}
 
 	for file in ${terraform_dir}/* ; do
 		egrep -q '\.zip$' $file
