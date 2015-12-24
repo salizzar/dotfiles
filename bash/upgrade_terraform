@@ -33,6 +33,11 @@ if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != ""
 
 	curl -L -o ${terraform_tmp_dir} https://releases.hashicorp.com/terraform/${latest_version}/${terraform_tarball}
 
+	if [ ! $? -eq 0 ] ; then
+		echo "Failed to download, please check your connection."
+		exit 1
+	fi
+
 	for file in ${terraform_dir}/* ; do
 		egrep -q '\.zip$' $file
 
