@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+if [ -d ~/.bin ] ; then
+	for folder in ~/.bin/* ; do
+		export PATH=$PATH:$folder
+	done
+fi
+
