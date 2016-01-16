@@ -1,6 +1,12 @@
 #! /usr/bin/env bash
 
 terraform_bin=$(which terraform)
+
+if [ "$terraform_bin" == "" ] ; then
+	echo "Terraform not found, skipping."
+	return
+fi
+
 terraform_dir=$(dirname ${terraform_bin})
 #echo "Terraform bin: ${terraform_bin}"
 
