@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+#
+# get current IP.
+#
+
+what_is_my_ip(){
+	curl -s http://whatismyip.org | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
+}
+
