@@ -32,16 +32,17 @@ if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != ""
 		platform="darwin_amd64"
 	fi
 
+	mkdir -p /tmp/terraform
+
 	terraform_tarball="terraform_${latest_version}_${platform}.zip"
 	terraform_tmp_dir="/tmp/terraform/${terraform_tarball}"
 	terraform_bkp_dir="/tmp/terraform/bkp"
 
-
-	curl -L -o ${terraform_tmp_dir} https://releases.hashicorp.com/terraform/${latest_version}/${terraform_tarball}
+	curl -v -L -o ${terraform_tmp_dir} https://releases.hashicorp.com/terraform/${latest_version}/${terraform_tarball}
 
 	if [ ! $? -eq 0 ] ; then
 		echo "Failed to download, please check your connection."
-		exit 1
+		return
 	fi
 
 	for file in ${terraform_dir}/* ; do
