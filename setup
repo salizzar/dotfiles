@@ -10,3 +10,7 @@ for file in $mypath/**/* ; do
 	source $file
 done
 
+for file in $HOME/.config/salizzar/* ; do
+	source $file
+done
+
