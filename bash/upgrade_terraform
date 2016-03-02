@@ -3,7 +3,9 @@
 terraform_bin=$(which terraform)
 
 if [ "$terraform_bin" == "" ] ; then
+	echo ""
 	echo "Terraform not found, skipping."
+	echo ""
 	return
 fi
 
@@ -20,9 +22,11 @@ latest_version=`cat $terraform_version_file | tail -n1 | awk '{ print $2 }' | se
 #echo $latest_version
 
 if [ "${actual_version}" != "${latest_version}" ] && [ "${latest_version}" != "" ] ; then
+	echo ""
 	echo "Terraform actual version: ${actual_version}"
 	echo "Terraform latest version: ${latest_version}"
 	echo "Upgrading Terraform now."
+	echo ""
 
 	uname=$(uname -s)
 
