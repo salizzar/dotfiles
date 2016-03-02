@@ -32,3 +32,5 @@
 
 [push]
 	default = matching
+[pull]
+	rebase = true
