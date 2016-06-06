@@ -9,4 +9,5 @@
 .rvmrc
 .vagrant
 log
+logs
 vendor
