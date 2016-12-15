@@ -10,9 +10,11 @@ for file in $mypath/**/* ; do
 	source $file
 done
 
-if [ -d $HOME/.config/salizzar ] ; then
-	for file in $HOME/.config/salizzar/* ; do
-		source $file
+if [ -d $HOME/.config/$USER ] ; then
+	for file in $HOME/.config/$USER/* ; do
+		if [ -f $file ] ; then
+			source $file
+		fi
 	done
 fi
 
