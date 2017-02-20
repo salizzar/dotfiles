@@ -10,12 +10,14 @@ loadenv() {
 }
 
 unloadenv() {
-	if [ -f $TMP_ENV_PATH/$1 ] ; then
-		for env_var in $(cat ~/.config/$USER/env/$1 | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do
-			unset $env_var
-		done
+	if [ -d $TMP_ENV_PATH ] ; then
+		if [ -f $TMP_ENV_PATH/$1 ] ; then
+			for env_var in $(cat ~/.config/$USER/env/$1 | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do
+				unset $env_var
+			done
 
-		rm $TMP_ENV_PATH/$1
+			rm $TMP_ENV_PATH/$1
+		fi
 	fi
 }
 
