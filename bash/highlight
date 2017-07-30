@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# Highlight a given file and copy it as RTF.
+#
+# Simon Olofsson <simon@olofsson.de>
+
+# 1. Run pygmentize
+# 2. Set the fontsize to 30 Points (=60 half-points)
+# 3. Remove all newlines
+# 4. Remove trailing paragraph, to prevent a line break
+# 5. Copy the result to the clipboard
+
+highlight() {
+	pygmentize -f rtf -O 'fontface=Monaco,style=tango' $1 | sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
+}
+
