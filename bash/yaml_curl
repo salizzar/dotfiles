@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# formats a yaml request with python
+#
+
+yaml_syntax(){
+	pygmentize -l yaml
+}
+
+yaml_ident(){
+	python -mpyaml
+}
+
+yaml_curl(){
+	curl -s $* | yaml_ident | yaml_syntax
+}
+
