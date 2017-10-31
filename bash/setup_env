@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 export TMP_ENV_PATH=/tmp/env
+mkdir -p $TMP_ENV_PATH
 
 loadenv() {
 	if  [ -d $TMP_ENV_PATH ] && [ ! -z "$1" ] ; then
@@ -10,11 +11,11 @@ loadenv() {
 }
 
 unloadenv() {
-	if [ -d $TMP_ENV_PATH ] && [ -f $TMP_ENV_PATH/$1 ] ; then
-		for env_var in $(cat ~/.config/$USER/env/$1 | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do
-			unset $env_var
-		done
+	for env_var in $(cat ~/.config/$USER/env/$1 | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do
+		unset $env_var
+	done
 
+	if [ -d $TMP_ENV_PATH ] && [ -f $TMP_ENV_PATH/$1 ] ; then
 		rm $TMP_ENV_PATH/$1
 	fi
 }
