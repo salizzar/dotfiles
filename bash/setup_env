@@ -4,19 +4,33 @@ export TMP_ENV_PATH=/tmp/env
 mkdir -p $TMP_ENV_PATH
 
 loadenv() {
-	if  [ -d $TMP_ENV_PATH ] && [ ! -z "$1" ] ; then
-		source ~/.config/$USER/env/$1
+	file=~/.config/$USER/env/$1
+
+	if  [ -d $TMP_ENV_PATH ] && [ ! -z "$1" ] && [ -f $file ] ; then
+		source $file
 		mkdir -p $TMP_ENV_PATH && touch $TMP_ENV_PATH/$1
 	fi
 }
 
 unloadenv() {
-	for env_var in $(cat ~/.config/$USER/env/$1 | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do
-		unset $env_var
-	done
+	file=~/.config/$USER/env/$1
+
+	if [ -f $file ] ; then
+		for env_var in $(cat $file | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do
+			unset $env_var
+		done
+	fi
 
 	if [ -d $TMP_ENV_PATH ] && [ -f $TMP_ENV_PATH/$1 ] ; then
 		rm $TMP_ENV_PATH/$1
+	fi
+}
+
+reloadenv() {
+	unloadenv $1;
+
+	if [ "$?" == "0" ]; then
+		loadenv $1;
 	fi
 }
 
