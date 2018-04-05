@@ -1,6 +1,5 @@
 *.log
 *.sw*
-*.tfvars
 *.tfstate*
 *.pyc
 .DS_Store
@@ -8,6 +7,8 @@
 .rbenv
 .rvmrc
 .vagrant
+.terraform*
 log
 logs
 vendor
+*.retry
