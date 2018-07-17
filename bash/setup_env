@@ -34,9 +34,3 @@ reloadenv() {
 	fi
 }
 
-if [ -d $TMP_ENV_PATH ]; then
-	for env in $(find $TMP_ENV_PATH -type f) ; do
-		loadenv $(basename $env)
-	done
-fi
-
