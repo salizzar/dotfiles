@@ -5,6 +5,6 @@
 #
 
 what_is_my_ip(){
-	curl -vL https://ifconfig.co/
+	curl -L https://ifconfig.co/
 }
 
