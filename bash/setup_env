@@ -3,8 +3,10 @@
 export TMP_ENV_PATH=/tmp/env
 mkdir -p $TMP_ENV_PATH
 
+PROJECTS_DIR=~/.env/projects
+
 loadenv() {
-	file=~/.config/$USER/env/$1
+	file=$PROJECTS_DIR/$1
 
 	if  [ -d $TMP_ENV_PATH ] && [ ! -z "$1" ] && [ -f $file ] ; then
 		source $file
@@ -13,7 +15,7 @@ loadenv() {
 }
 
 unloadenv() {
-	file=~/.config/$USER/env/$1
+	file=$PROJECTS_DIR/$1
 
 	if [ -f $file ] ; then
 		for env_var in $(cat $file | grep export | awk '{ print $2 }' | awk -F '=' '{ print $1 }') ; do

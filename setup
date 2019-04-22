@@ -10,8 +10,10 @@ for file in $mypath/**/* ; do
 	source $file
 done
 
-if [ -d $HOME/.config/$USER ] ; then
-	for file in $HOME/.config/$USER/* ; do
+DEFAULT_DIR=~/.env/default
+
+if [ -d $DEFAULT_DIR ] ; then
+	for file in $DEFAULT_DIR/* ; do
 		if [ -f $file ] ; then
 			source $file
 		fi
