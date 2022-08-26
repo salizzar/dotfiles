@@ -13,3 +13,7 @@ logs
 vendor
 *.retry
 yarn.lock
+node_modules
+.venv
+venv
+bash/load_sensitive_data

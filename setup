@@ -7,16 +7,18 @@
 mypath=${BASH_ARGV[0]%/*}
 
 for file in $mypath/**/* ; do
-	source $file
+  if [[ "${file}" != *"/installers/"* ]] ; then
+    source $file
+  fi
 done
 
 DEFAULT_DIR=~/.env/default
 
 if [ -d $DEFAULT_DIR ] ; then
-	for file in $DEFAULT_DIR/* ; do
-		if [ -f $file ] ; then
-			source $file
-		fi
-	done
+  for file in $DEFAULT_DIR/* ; do
+    if [ -f $file ] ; then
+      source $file
+    fi
+  done
 fi
 
