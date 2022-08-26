@@ -5,14 +5,14 @@
 #
 
 yaml_syntax(){
-	pygmentize -l yaml
+  pygmentize -l yaml
 }
 
 yaml_ident(){
-	python -mpyaml
+  python -mpyaml
 }
 
 yaml_curl(){
-	curl -s $* | yaml_ident | yaml_syntax
+  curl -s $* | yaml_ident | yaml_syntax
 }
 

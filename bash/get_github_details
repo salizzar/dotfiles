@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+function get_github_details {
+  GITHUB_PATH=$1
+  GITHUB_API_URL="https://api.github.com"
+  URL="${GITHUB_API_URL}/${GITHUB_PATH}"
+
+  curl \
+    -L \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: token ${GITHUB_PERSONAL_ACCESS_TOKEN}" \
+    $URL
+}

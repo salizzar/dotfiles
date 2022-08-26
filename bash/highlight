@@ -11,6 +11,6 @@
 # 5. Copy the result to the clipboard
 
 highlight() {
-	pygmentize -f rtf -O 'fontface=Monaco,style=tango' $1 | sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
+  pygmentize -f rtf -O 'fontface=Monaco,style=tango' $1 | sed 's;\\f0;\\f0\\fs60;g' | tr -d '\n' | sed 's;\\par}$;};' | pbcopy
 }
 

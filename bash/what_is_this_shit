@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+function what_is_this_shit {
+  WEIRD_URL=$1
+
+  echo "$ whois ${WEIRD_URL}"
+  whois ${WEIRD_URL}
+
+  echo $ "+trace ${WEIRD_URL}"
+  dig +trace ${WEIRD_URL}
+
+  echo "$ curl -vL ${WEIRD_URL}"
+  curl -vL ${WEIRD_URL}
+  echo ""
+}
