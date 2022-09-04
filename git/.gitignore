@@ -17,3 +17,4 @@ node_modules
 .venv
 venv
 bash/load_sensitive_data
+tmp
