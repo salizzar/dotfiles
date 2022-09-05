@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-function what_is_this_shit {
+function what_the_fuck_is_this {
   WEIRD_URL=$1
 
   whois ${WEIRD_URL}
