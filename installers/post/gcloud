@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+GCLOUD_DIR=~/.gcloud
+GCLOUD_TARBALL=google-cloud-cli-421.0.0-darwin-arm.tar.gz
+GCLOUD_TARBALL_PATH=${GCLOUD_DIR}/${GCLOUD_TARBALL}
+GCLOUD_TARBALL_DIR=${GCLOUD_DIR}/google-cloud-cli-421.0.0-darwin-arm
+
+
+rm -rf ${GCLOUD_TARBALL_DIR}
+mkdir -p ${GCLOUD_DIR} ${GCLOUD_TARBALL_DIR}
+curl --output-dir ${GCLOUD_DIR} --remote-name https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${GCLOUD_TARBALL}
+tar jxf ${GCLOUD_TARBALL_PATH} --directory ${GCLOUD_TARBALL_DIR} && rm ${GCLOUD_TARBALL_PATH}
+
+
+GCLOUD_ADDITIONAL_COMPONENTS="--additional-components terraform-tools"
+
+pwd=$PWD
+(cd ${GCLOUD_TARBALL_DIR} && google-cloud-sdk/install.sh --quiet ${GCLOUD_ADDITIONAL_COMPONENTS})
+cd $PWD
