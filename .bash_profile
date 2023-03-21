@@ -52,8 +52,6 @@ if [ -f '~/.gcloud/google-cloud-cli-421.0.0-darwin-arm/google-cloud-sdk/completi
 # Android builds
 #
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export ANDROID_HOME="~/Library/Android/sdk"
 export ANDROID_SDK_ROOT=${ANDROID_HOME}
 
