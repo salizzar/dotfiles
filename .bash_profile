@@ -2,39 +2,59 @@
 source ~/.dotfiles/setup
 
 
+#
 # homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#
+[[ -s "/opt/homebrew/bin/brew shellenveval" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -s "/usr/local/bin/brew shellenv" ]] && eval "$(/usr/local/bin/brew shellenv)"
 
 
+
+#
 # gvm
-source ${HOME}/.gvm/scripts/gvm
+#
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/rvm"
 
 
+#
 # rvm
-export PATH="${PATH}:${HOME}/.rvm"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
+#
 # nvm
+#
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+#
 # pyenv
+#
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+
+#
+# rustup (rust version manager)
+#
+[[ -s "$HOME/.rsvm/current/cargo/env" ]] && source "$HOME/.rsvm/current/cargo/env"
+
+
+#
+# sdkman
+#
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
 # hacks
 export ICLOUD_PATH='~/Library/Mobile\ Documents/com~apple~CloudDocs/'
 export ISE_LIBRARY="/opt/homebrew/Cellar/eiffelstudio/19.05.10.3187/" # Eiffel library path
 export ISE_LIBRARY_PROJECTS="${HOME}/.eiffel/"                        # Eiffel projects
-
-
-# rustup (rust version manager)
-source "$HOME/.rsvm/current/cargo/env"
 
 
 #
@@ -54,11 +74,4 @@ if [ -f '~/.gcloud/google-cloud-cli-421.0.0-darwin-arm/google-cloud-sdk/completi
 
 export ANDROID_HOME="~/Library/Android/sdk"
 export ANDROID_SDK_ROOT=${ANDROID_HOME}
-
-
-#
-# sdkman
-#
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
