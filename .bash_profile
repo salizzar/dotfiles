@@ -5,15 +5,14 @@ source ~/.dotfiles/setup
 #
 # homebrew
 #
-[[ -s "/opt/homebrew/bin/brew shellenveval" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
-[[ -s "/usr/local/bin/brew shellenv" ]] && eval "$(/usr/local/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 
 #
 # gvm
 #
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/rvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 
 #
