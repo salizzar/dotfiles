@@ -5,7 +5,8 @@ source ~/.dotfiles/setup
 #
 # homebrew
 #
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -s "/opt/homebrew/bin/brew shellenveval" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -s "/usr/local/bin/brew shellenv" ]] && eval "$(/usr/local/bin/brew shellenv)" # legacy setup
 
 
 
@@ -41,6 +42,12 @@ eval "$(pyenv init -)"
 # rustup (rust version manager)
 #
 [[ -s "$HOME/.rsvm/current/cargo/env" ]] && source "$HOME/.rsvm/current/cargo/env"
+
+
+#
+# cargo
+#
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 
 #
